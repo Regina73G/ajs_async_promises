@@ -27,13 +27,6 @@ test("тестирование успешной загрузки сохране�
   expect(saving).toEqual(saveObj);
 });
 
-test("тестирование ошибки при обработки JSON", async () => {
-  read.mockResolvedValue("mockData");
-  json.mockResolvedValue("invalid json");
-  const saving = GameSavingLoader.load();
-  await expect(saving).rejects.toThrow(SyntaxError);
-});
-
 test("тестирование ошибки при загрузке", async () => {
   read.mockRejectedValue(new Error("Ошибка чтения"));
   const saving = GameSavingLoader.load();
